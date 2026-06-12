@@ -33,5 +33,5 @@
   - **网页生成 Prompt**：用 `resources/website_skill_prompt.md` 和 `resources/fronted_design.md` 控制页面信息层级，只保留岗位推荐卡片，减少咨询报告式冗余内容。
 
 ## Demo 链接
-
-[查看静态 Demo：外企求职报告](./foreign_internship_report.html)
+The final web page:
+https://zhangwandi1101-maker.github.io/miaomiao111/index.html
