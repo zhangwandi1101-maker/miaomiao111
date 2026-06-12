@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>外企求职报告</title>
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --paper: #ffffff;
+      --ink: #15202b;
+      --muted: #657386;
+      --line: #d9e3ee;
+      --soft: #eaf6ff;
+      --accent: #1267b3;
+      --accent-dark: #0a4f91;
+      --good: #0b7a56;
+      --warn: #a35a00;
+      --shadow: 0 14px 34px rgba(21, 32, 43, .08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--soft);
+      border-bottom: 1px solid var(--line);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 32px auto 56px;
+    }
+
+    .job-board > h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    .job-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .job-card {
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: clamp(18px, 2.5vw, 28px);
+    }
+
+    .card-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .rank {
+      display: inline-grid;
+      min-width: 42px;
+      height: 28px;
+      place-items: center;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      background: #e2f0fc;
+      color: var(--accent-dark);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .job-title {
+      font-size: clamp(20px, 2.5vw, 28px);
+      line-height: 1.24;
+      font-weight: 840;
+      overflow-wrap: anywhere;
+    }
+
+    .company {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 680;
+    }
+
+    .score {
+      min-width: 88px;
+      padding: 10px 12px;
+      border: 1px solid #b9daf9;
+      border-radius: 8px;
+      background: #f4faff;
+      color: var(--accent-dark);
+      text-align: center;
+    }
+
+    .score strong {
+      display: block;
+      font-size: 29px;
+      line-height: 1;
+      font-weight: 880;
+    }
+
+    .score span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .fact {
+      min-height: 76px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+
+    .fact span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    .fact strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 15px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .apply {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      margin-bottom: 18px;
+      padding: 0 18px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 820;
+      text-decoration: none;
+    }
+
+    .apply:hover,
+    .apply:focus-visible {
+      background: var(--accent-dark);
+    }
+
+    .notes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .note {
+      padding: 12px 14px;
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      background: #f8fbff;
+    }
+
+    .note:nth-child(2) {
+      border-left-color: var(--warn);
+    }
+
+    .note:nth-child(3) {
+      border-left-color: var(--good);
+    }
+
+    .note h3 {
+      margin-bottom: 6px;
+      font-size: 15px;
+      font-weight: 830;
+    }
+
+    .note p {
+      color: #354254;
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      main {
+        width: min(100% - 22px, 1180px);
+        margin-top: 22px;
+      }
+
+      .card-top,
+      .facts,
+      .notes {
+        grid-template-columns: 1fr;
+      }
+
+      .score {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>外企求职报告</h1>
+  </header>
+
+  <main>
+    <section class="job-board">
+      <h2>Top 岗位推荐看板</h2>
+      <div class="job-list" id="job-list"></div>
+    </section>
+  </main>
+
+  <script>
+    const jobs = [
+      {
+        rank: 1,
+        title: "Data Analysis and Smart Product Project Intern",
+        company: "Deloitte China",
+        score: 94,
+        type: "实习 / Project Intern",
+        city: "上海 / 杭州",
+        industry: "专业服务 / 数据咨询",
+        priority: "强烈推荐",
+        url: "https://cn.prosple.com/graduate-employers/deloitte-china/jobs-internships/data-analysis-and-smart-product-project-intern",
+        reason: "岗位覆盖 SQL/Python/Excel/Tableau、BI 平台、数据仓库、需求梳理和产品原型，与你的商业分析硕士、SQL/Snowflake、漏斗留存和 AI 产品运营经历高度贴合。",
+        risk: "要求至少 4 个月、每周 4-5 天；需要先确认课程安排、到岗时间和是否能稳定出勤。",
+        cvTip: "把 AI chatbot 项目改成“指标体系-异常定位-业务建议-采纳结果”结构，突出 DAU、漏斗、留存、转化耗时和 SQL/Snowflake。"
+      },
+      {
+        rank: 2,
+        title: "Business Analyst Intern, GM CN BI",
+        company: "Amazon China",
+        score: 92,
+        type: "实习 / Business Intelligence",
+        city: "上海",
+        industry: "电商 / 云与全球业务",
+        priority: "强烈推荐",
+        url: "https://jobs.accaglobal.com/job/13913480/business-analyst-intern-gm-cn-bi/",
+        reason: "JD 明确写到周/月报、QuickSight 可视化、SQL 调试、业务 deep dive 和 Sales AI agent 支持，你的 Excel/SQL/Python、监控报表和转化分析能直接对上。",
+        risk: "偏 BI 和业务支持，节奏会很高；如果面试追问 SQL 查询优化、BI 自动化和英文沟通，需要准备具体项目细节。",
+        cvTip: "新增一条英文 bullet：Maintained SQL/Excel reporting for chatbot growth metrics and diagnosed conversion drop-offs through funnel analysis."
+      },
+      {
+        rank: 3,
+        title: "Associate Solutions Architect Intern, Shanghai",
+        company: "Amazon Web Services",
+        score: 90,
+        type: "实习 / Solutions Architect",
+        city: "上海",
+        industry: "云计算 / 解决方案咨询",
+        priority: "推荐",
+        url: "https://www.amazon.jobs/en/jobs/3147132/associate-solutions-architect-intern-shanghai",
+        reason: "岗位在 AWS 解决方案架构师团队，兼具客户需求理解、技术方案表达和云产品理解；你的商业分析、AI 产品运营和数据项目能包装成“业务问题到技术方案”的能力。",
+        risk: "入职时间要求 2026 年 6 月及之前，且每周 4-5 天、至少 4 个月；技术深度和云服务基础需要快速补。",
+        cvTip: "加一段 AWS/云计算学习计划或项目，把 SQL/Python、AI 工具和业务需求分析连接到云上数据/AI 解决方案场景。"
+      },
+      {
+        rank: 4,
+        title: "AWS Sales Ops Intern - Shanghai",
+        company: "Amazon Web Services",
+        score: 89,
+        type: "实习 / Sales Operations",
+        city: "上海",
+        industry: "云计算 / B2B 商业运营",
+        priority: "强烈推荐",
+        url: "https://www.amazon.jobs/en/jobs/3178457/aws-sales-ops-intern-shanghai",
+        reason: "岗位做 forecast、pipeline、revenue 数据分析，使用 Excel、SQL、Tableau 和 Salesforce；你的商业分析背景、财务分析和指标体系经历可迁移。",
+        risk: "岗位不是纯数据岗，销售运营和跨团队协调占比高；要准备英文 narrative writing 和业务复盘表达。",
+        cvTip: "把财务分析实习写成“预算/成本/定价/预测”场景，强调用数据支持业务决策，而不是只写录入。"
+      },
+      {
+        rank: 5,
+        title: "IT Business Analyst Intern",
+        company: "Philips China",
+        score: 87,
+        type: "实习 / IT BA",
+        city: "上海",
+        industry: "医疗健康科技",
+        priority: "强烈推荐",
+        url: "https://www.careers.philips.com/global/en/job/582327/IT-Business-Analyst-Intern",
+        reason: "IT BA 角色强调业务需求澄清、项目文档、跨团队沟通和系统落地；你的产品运营、需求理解、指标口径统一和汇报能力很适配。",
+        risk: "医疗健康科技场景可能要求对系统流程和英文文档更熟；简历需避免只呈现“数据执行”，要体现需求分析。",
+        cvTip: "在 AI 产品运营经历下加入“collaborated with business stakeholders to clarify metric definitions and reporting needs”。"
+      },
+      {
+        rank: 6,
+        title: "Data Analyst/Data Mining Intern (Machine Learning)",
+        company: "Philips China",
+        score: 86,
+        type: "实习 / Data Mining",
+        city: "上海",
+        industry: "医疗健康科技",
+        priority: "推荐",
+        url: "https://www.careers.philips.com/global/en/job/578274/Data-Analyst-Data-Mining-Intern-Machine-Learning",
+        reason: "数据挖掘和 ML 方向与你的 Python、Pandas、Matplotlib、机器学习课程、用户行为分析项目有交集。",
+        risk: "若面试深入算法和建模，当前简历中的模型方法描述偏少；需要准备一个可讲清楚的特征、指标和验证过程。",
+        cvTip: "把淘宝分析项目补成“数据清洗-指标构建-可视化-洞察-运营建议”，并补充是否使用分群、复购窗口或相关性分析。"
+      },
+      {
+        rank: 7,
+        title: "Data Governance Intern",
+        company: "EY China",
+        score: 84,
+        type: "实习 / Data Governance",
+        city: "上海",
+        industry: "专业服务 / 数据管理",
+        priority: "推荐",
+        url: "https://cn.prosple.com/graduate-employers/ey-china/jobs-internships",
+        reason: "数据治理和数据管理服务中心方向需要指标口径、数据质量、流程文档和业务理解；你做过统一指标口径和日级监控看板。",
+        risk: "列表页需要跳转 EY 官方系统确认具体 JD；数据治理岗位可能更看重流程、文档和数据质量术语。",
+        cvTip: "技能栏加入 data governance、data quality、metric definition；项目 bullet 写清“统一口径”和“数据准确性校验”。"
+      },
+      {
+        rank: 8,
+        title: "Data & AI Intern (AI Innovation Center)",
+        company: "EY China",
+        score: 83,
+        type: "实习 / Data & AI",
+        city: "上海",
+        industry: "专业服务 / AI 咨询",
+        priority: "推荐",
+        url: "https://cn.prosple.com/graduate-employers/ey-china/jobs-internships",
+        reason: "AI Innovation Center 与你的 AI 工具应用、AI chatbot 产品运营、Python/SQL 和商业分析背景相连，适合冲一版 AI+数据咨询方向。",
+        risk: "岗位可能偏技术或咨询交付，具体要求需进入 EY 系统确认；如果要求硬核算法，匹配度会下降。",
+        cvTip: "单独放一个“AI Product & Analytics”经历小节，写 ChatGPT/Codex 辅助场景拆解、卖点提炼和分析提效。"
+      },
+      {
+        rank: 9,
+        title: "Artificial Intelligence / Consulting Services - Project Intern",
+        company: "Deloitte China",
+        score: 82,
+        type: "实习 / AI Consulting",
+        city: "上海",
+        industry: "专业服务 / AI 咨询",
+        priority: "推荐",
+        url: "https://cn.prosple.com/graduate-employers/deloitte-china/jobs-internships/artificial-intelligence-consulting-services-project-intern",
+        reason: "Business track 包含 AI 产品设计、市场研究、专家访谈和方案协作，能承接你的 AI 产品运营、商业分析和创新设计大赛经历。",
+        risk: "Engineering track 对 NLP/CV/ML/代码要求更高；投递和面试时要主动定位 business track。",
+        cvTip: "把“乐歌创新设计大赛”从活动描述改为产品案例：用户场景、痛点、卖点、AI 辅助迭代、展示产出。"
+      },
+      {
+        rank: 10,
+        title: "Digital Platform Developer & Data Analysis Intern",
+        company: "BASF China",
+        score: 81,
+        type: "实习 / Data Analysis",
+        city: "上海",
+        industry: "化工 / 数字化平台",
+        priority: "推荐",
+        url: "https://cn.prosple.com/graduate-employers/basf-china/jobs-internships/digital-platform-developer-data-analysis-intern",
+        reason: "岗位做 PowerBI/Power Query 报告和数字平台模块开发；你的 Excel、SQL、Python、可视化和数据报表经历可迁移。",
+        risk: "Power BI/Power Query 未在简历里明确出现；如果系统筛关键词可能吃亏。",
+        cvTip: "技能栏补充“BI/Data Visualization: Matplotlib; familiar with dashboard logic; quick learner for Power BI/Tableau”。"
+      },
+      {
+        rank: 11,
+        title: "Product Manager Intern",
+        company: "Apple China",
+        score: 79,
+        type: "实习 / Product Management",
+        city: "上海",
+        industry: "消费电子 / 电商产品",
+        priority: "推荐",
+        url: "https://cn.prosple.com/graduate-employers/apple-china/jobs-internships/product-manager-intern",
+        reason: "岗位涉及线上购物体验、用户旅程、跨团队协作和业务问题澄清；你的 AI 产品运营、转化监控和产品创新经历能支撑产品分析方向。",
+        risk: "岗位要求硕士在读且实习后返校，通常要 3-4 个月；产品案例和英文表达会被重点考察。",
+        cvTip: "准备产品版简历，把 chatbot 项目写成用户旅程、核心指标、问题定位、优化建议四段式。"
+      },
+      {
+        rank: 12,
+        title: "Business Analyst Intern",
+        company: "McKinsey China",
+        score: 77,
+        type: "实习 / Consulting BA",
+        city: "上海",
+        industry: "管理咨询",
+        priority: "可尝试",
+        url: "https://cn.prosple.com/graduate-employers/mckinsey-china/jobs-internships/business-analyst-intern-0",
+        reason: "BA Intern 看重结构化问题拆解、数据分析、商业判断和沟通表达；你的商业分析硕士、财务分析和数据项目有基础。",
+        risk: "竞争极强，且不只是数据岗；需要咨询 case、英文简历和高度量化的影响结果。",
+        cvTip: "把经历改成咨询喜欢的 Problem-Action-Impact 表达，每条 bullet 都尽量有业务问题、方法和结果。"
+      },
+      {
+        rank: 13,
+        title: "Manufacturing Digitalization & Compliance Support Intern",
+        company: "Roche China",
+        score: 75,
+        type: "实习 / Digitalization",
+        city: "上海",
+        industry: "医药 / 制造数字化",
+        priority: "可尝试",
+        url: "https://cn.prosple.com/graduate-employers/roche-china/jobs-internships/manufacturing-digitalization-compliance-support-intern",
+        reason: "岗位做系统部署、主数据清理、SOP/技术文档和跨团队协作；你的审计背景、数据口径意识和项目管理课程有帮助。",
+        risk: "GMP、ITOT 和医药生产流程较专业，行业门槛比互联网/咨询数据岗高。",
+        cvTip: "突出审计学背景带来的流程、合规、细节和文档能力，弱化与医药无关的活动描述。"
+      },
+      {
+        rank: 14,
+        title: "Procurement Intern (for Greater China)",
+        company: "Signify China",
+        score: 72,
+        type: "实习 / Procurement Analysis",
+        city: "上海",
+        industry: "智能照明 / 采购供应链",
+        priority: "可尝试",
+        url: "https://cn.prosple.com/graduate-employers/signify-china/jobs-internships/procurement-intern-for-greater-china",
+        reason: "岗位包含供应商、市场调研、成本节约和 Excel 分析，适合把你的财务分析、成本控制和商业洞察作为备选方向。",
+        risk: "采购职能不是核心数分/商分，长期方向可能偏供应链；只建议作为外企经验备选。",
+        cvTip: "投这类岗位时把财务分析、成本控制、定价策略和 Excel 报表放在最前面。"
+      },
+      {
+        rank: 15,
+        title: "Market Analysis - Summer Intern",
+        company: "ABB China",
+        score: 70,
+        type: "暑期实习 / Market Analysis",
+        city: "上海",
+        industry: "工业自动化 / 市场分析",
+        priority: "谨慎投递",
+        url: "https://cn.prosple.com/graduate-employers/abb-china/jobs-internships",
+        reason: "市场分析和商业洞察与商业分析专业、用户行为分析、营销活动项目有关，适合作为行业分析备选。",
+        risk: "开始窗口为 2026 年 6 月，时间很紧；如果入口关闭，应替换为同页 Purchasing Summer Intern 或 Program Assistant。",
+        cvTip: "把 Go Green 营销活动和淘宝用户行为分析合并成“市场/用户洞察”模块，补充洞察如何转化为运营建议。"
+      }
+    ];
+
+    const labels = [
+      ["岗位类型", "type"],
+      ["城市", "city"],
+      ["行业", "industry"],
+      ["优先级", "priority"]
+    ];
+
+    const jobList = document.querySelector("#job-list");
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    jobList.innerHTML = jobs.map((job) => `
+      <article class="job-card">
+        <div class="card-top">
+          <div>
+            <span class="rank">#${job.rank}</span>
+            <h3 class="job-title">${escapeHtml(job.title)}</h3>
+            <p class="company">${escapeHtml(job.company)}</p>
+          </div>
+          <div class="score"><strong>${job.score}</strong><span>匹配分</span></div>
+        </div>
+        <div class="facts">
+          ${labels.map(([label, key]) => `
+            <div class="fact"><span>${label}</span><strong>${escapeHtml(job[key])}</strong></div>
+          `).join("")}
+        </div>
+        <a class="apply" href="${escapeHtml(job.url)}" target="_blank" rel="noreferrer">打开岗位页面</a>
+        <div class="notes">
+          <div class="note"><h3>推荐理由</h3><p>${escapeHtml(job.reason)}</p></div>
+          <div class="note"><h3>风险提醒</h3><p>${escapeHtml(job.risk)}</p></div>
+          <div class="note"><h3>简历优化建议</h3><p>${escapeHtml(job.cvTip)}</p></div>
+        </div>
+      </article>
+    `).join("");
+  </script>
+</body>
+</html>
